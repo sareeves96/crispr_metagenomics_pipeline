@@ -8,8 +8,8 @@ CRISPRCasFinder
 https://github.com/dcouvin/CRISPRCasFinder
 
 NCBI Blast+ 2.11.0
-`cd $HOME`
-`wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.11.0+-x64-linux.tar.gz`
+`cd $HOME`\n
+`wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.11.0+-x64-linux.tar.gz`\n
 `tar -zxvf ncbi-blast-2.11.0+-x64-linux.tar.gz`
 
 For local database searching, requires two BLAST databases:
