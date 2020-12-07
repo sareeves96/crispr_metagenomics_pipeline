@@ -32,7 +32,7 @@ so_file=$CCF_dir/sel392v2.so
 out_dir_2=$out_dir/analysis
 mkdir $out_dir_2
 
-#perl $CCF_pl -in $in_file_name -out $out_dir -cas -cf $CF_dir -keep -def S -html -copyCSS -meta -so $so_file
+perl $CCF_pl -in $in_file_name -out $out_dir -cas -cf $CF_dir -keep -def S -html -copyCSS -meta -so $so_file
 
 ## Filter sequences with CRISPR/Cas systems from the original assembly file and prime them for blastn search.
 #python3 filter_seq.py --contigs $in_file_name --results $out_dir/result.json --out $outdir # filters contigs with CRISPR/Cas systems. 
@@ -42,9 +42,9 @@ python3 collect_spacers.py --result $out_dir/result.json --out $out_dir_2
 # extract cas clusters index by associated contig_id and with each gene
 python3 collect_cas.py --result $out_dir/result.json --out $out_dir_2
 # blast all input contigs for taxonomy hits
-ncbi-blast-2.11.0+/bin/blastn -query $in_file_name -db ref_prok_rep_genomes -outfmt "6 qseqid sseqid scinames scomnames evalue" -evalue 0.001 -max_target_seqs 5 -out $out_dir_2/blast_contigs_vs_prok_rep_genomes.tab -parse_deflines -num_threads 8
+blastn -query $in_file_name -db ref_prok_rep_genomes -outfmt "6 qseqid sseqid scinames scomnames evalue" -evalue 0.001 -max_target_seqs 5 -out $out_dir_2/blast_contigs_vs_prok_rep_genomes.tab -parse_deflines -num_threads 8
 # blast all detected putative spacer regions for taxonomy hits
-ncbi-blast-2.11.0+/bin/blastn -query $out_dir_2/labelled_spacers.fa -db ref_viruses_rep_genomes -outfmt "6 qseqid sseqid scinames scomnames evalue bitscore pident" -word_size 5 -evalue 0.005 -max_target_seqs 5 -out $out_dir_2/blast_spacers_vs_rep_viruses.tab -parse_deflines -num_threads 8
+blastn -query $out_dir_2/labelled_spacers.fa -db ref_viruses_rep_genomes -outfmt "6 qseqid sseqid scinames scomnames evalue bitscore pident" -word_size 5 -evalue 0.005 -max_target_seqs 5 -out $out_dir_2/blast_spacers_vs_rep_viruses.tab -parse_deflines -num_threads 8
 
 python3 label_contigs_with_blast.py --contigs $in_file_name --spacers $out_dir_2/labelled_spacers.fa --contigs_blast $out_dir_2/blast_contigs_vs_prok_rep_genomes.tab --spacers_blast $out_dir_2/blast_spacers_vs_rep_viruses.tab --out $out_dir_2
 
