@@ -17,7 +17,7 @@ Please use the information on the GitHub page to cite the creators.
 `tar -zxvf ncbi-blast-2.11.0+-x64-linux.tar.gz`
 
 For local database searching, requires two BLAST databases: <br/>
-<u> WARNING: the ref_prok_rep_genomes database is >6GB in size </u> 
+<u> WARNING: the ref_prok_rep_genomes database is >6GB in size </u>  
 `mkdir blastdb`  
 `export BLASTDB=$HOME/blastdb`  
 `cd blastdb`  
