@@ -9,6 +9,7 @@ Requires standalone versions of:
 
 <b> CRISPRCasFinder </b> <br/>
 https://github.com/dcouvin/CRISPRCasFinder
+Please use the information on the GitHub page to cite the creators.
 
 <b> NCBI Blast+ 2.11.0 </b> <br/>
 `cd $HOME`  
