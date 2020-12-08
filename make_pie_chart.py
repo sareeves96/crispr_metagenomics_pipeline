@@ -3,6 +3,7 @@ import numpy as np
 import argparse
 import pandas as pd
 import numpy as np
+import os
 
 parser = argparse.ArgumentParser(description='Create a 2-layer pie chart of genus and species for blast hits on contigs')
 parser.add_argument('--table', action='store', dest='table_path', help='full path to the final_output.tab')
@@ -10,7 +11,7 @@ parser.add_argument('--out', action='store', dest='out_path')
 args = parser.parse_args()
 
 df = pd.read_csv(args.table, sep='\t', index_col=0)
-df = df.drop_duplicates()
+df = df.reset_index().drop_duplicates(subset='contig_id', keep='first')
 df['common_name'] = df['common_name'].fillna('Unknown unknown')
 df['genus'] = df['common_name'].apply(lambda x: x.split(' ')[0].strip('[').strip(']'))
 df['species'] = df['common_name'].apply(lambda x: x.split(' ')[1])
@@ -31,7 +32,8 @@ df_inner = df_inner.rename(columns={'species_count': 'genus_count'})
 
 df_outer = df_species.loc[df_species['genus'].isin(df_inner.index)]
 df_outer = df_outer.append(pd.Series({'genus': 'Other','species': '','species_count': species_sum - sum(df_outer['species_count'])}),ignore_index=True)
-df_outer = df_outer.sort_values(by='species_count', ascending=False).groupby('genus').head(5)
+df_outer = df_outer.sort_values(by='species_count', ascending=False)#.groupby('genus').head(5)
+df_outer = df_outer.loc[df_outer['species_count']>2]
 df_new = df_outer.merge(df_inner.reset_index(), on='genus', how='outer')
 df_new['sort_key_outer'] = 1
 df_new.loc[df_new['genus']=='Other', 'sort_key_outer'] = 0

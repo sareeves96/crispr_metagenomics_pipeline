@@ -64,7 +64,7 @@ for unmatched in unmatched_spacers:
                                   'score': None,
                                   'percent_ident': None}), ignore_index=True)
 
-# parse the contig, CRISPR, and spacer indices from the first column and then drop that column
+    :# parse the contig, CRISPR, and spacer indices from the first column and then drop that column
 df_s['contig_id'] = df_s['contig_CRISPR_spacer'].apply(lambda x: '_'.join(x.split('_')[:2]))
 df_s['CRISPR'] = df_s['contig_CRISPR_spacer'].apply(lambda x: float(x.split('_')[2]))
 df_s['spacer'] = df_s['contig_CRISPR_spacer'].apply(lambda x: float(x.split('_')[3]))
@@ -78,39 +78,8 @@ df_out['contig_no'] = df_out['contig_id'].apply(lambda x: float(x.split('_')[1])
 df_out = df_out.sort_values(['contig_no', 'CRISPR', 'spacer'])
 df_out = df_out.drop(['contig_no'], axis=1).set_index('contig_id')
 
-# use pattern matching in the CCF Cas file to collect any Cas protein sequences for each contig
-# place them in a temporary file
-#with open(args.cas_file, 'r') as f:
-#    with open(os.path.join(args.out_path, 'cas_list.txt'), 'w') as t:
-#        for line in f.readlines():
-#            if len(line.split('_')) > 2 and line[0] != '#':
-#                contig = '_'.join(line.split('\t')[0].split('_')[:3]) 
-#                cas = line.split('\t')[1]
-#                t.write(f"{contig}\t{cas}\n")
-
-# read this new cas file into a pandas dataframe
-#df_cas = pd.read_csv(os.path.join(args.out_path, 'cas_list.txt'), delimiter='\t', header=None)
-#df_cas.columns = ['contig_id', 'cas']
-
-# add a new column which will allow us to see which types of Cas were present after reshaping
-#df_cas['present'] = 1
-
-# what's going on here? should be many duplicate contig_ids with different cas
-#df_cas = df_cas.sort_values('contig_id').reset_index(drop=True).drop_duplicates(subset='contig_id')
-
-#df_cas = df_cas.pivot(index='contig_id', columns='cas', values='present').reset_index()
-#df_cas['contig_id'] = df_cas['contig_id'].apply(lambda x: '_'.join(x.split('_')[:2]))
-#df_cas = df_cas.fillna(0)
-#df_cas = df_cas.groupby('contig_id').agg('sum')#.replace(0, None)
-#df_out = df_out.merge(df_cas, how='left', on='contig_id')
-
 df_out.to_csv(os.path.join(args.out_path, 'final_output.tab'), sep='\t')
 
-
-
-
-## **************************************************--------------------------------------------------
-## **************************************************
 ## Distribution of cas genes in the metagenome
 ## --------------------------------------------------
 
