@@ -1,4 +1,4 @@
-![alt text](https://github.com/sareeves96/crispr_metagenomics_pipeline/blob/main/figure.png?raw=true)
+![alt text](https://github.com/sareeves96/crispr_metagenomics_pipeline/blob/main/genus_species_pie.png?raw=true)
 
 To install python dependencies:
 
