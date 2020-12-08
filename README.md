@@ -46,8 +46,11 @@ genera_cas_fraction.tab -> the fraction of each genera containing cas genes as a
 
 <u> PDF files: </u> <br/>
 
-casgene_distribution.pdf -> a pie_chart showing the distribution of cas genes and a table showing the data from the corresponing .tab file <br/>
+casgene_distribution.pdf -> a pie chart showing the distribution of cas genes and a table showing the data from the corresponing .tab file <br/>
 genera_stats.pdf -> all genera related analysis. <br/>
 
+<u> PDF files: </u> <br/>
+
+genus_species_pie.png -> a pie chart (shown at top of read me) showing the distribution of top genera and species detected in the metagenome
 ***
 ***
