@@ -47,4 +47,4 @@ blastn -query $in_file_name -db ref_prok_rep_genomes -outfmt "6 qseqid sseqid sc
 blastn -query $out_dir_2/labelled_spacers.fa -db ref_viruses_rep_genomes -outfmt "6 qseqid sseqid scinames scomnames evalue bitscore pident" -word_size 5 -evalue 0.005 -max_target_seqs 5 -out $out_dir_2/blast_spacers_vs_rep_viruses.tab -parse_deflines -num_threads 8
 
 python3 label_contigs_with_blast.py --contigs $in_file_name --spacers $out_dir_2/labelled_spacers.fa --contigs_blast $out_dir_2/blast_contigs_vs_prok_rep_genomes.tab --spacers_blast $out_dir_2/blast_spacers_vs_rep_viruses.tab --out $out_dir_2
-
+python3 make_py_chart.py --table $out_dir_2/final_output.tab --out $out_dir_2 
