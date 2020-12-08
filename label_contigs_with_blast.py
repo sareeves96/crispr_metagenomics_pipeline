@@ -343,6 +343,8 @@ dict_pie_genera = condense("dict_pie_genera", df_genus_occurence, "Genus", "Occu
 ## Plot the data as a pie chart and exports it as a PDF file
 
 df_pie_genera = pd.DataFrame.from_dict(dict_pie_genera)
+df_pie_genera.index = dict_pie_genera['Genus']
+df_pie_genera.pop('Genus')
 
 plot_title_genera = "Distribution of genera in the metagenome as a percentage"
 plot_pie = df_pie_genera.plot.pie(y='Occurence', x='Genus', figsize=(8,8), ylabel="", legend=False, autopct='%.2f', fontsize=10, title=plot_title_genera)  # Plot
