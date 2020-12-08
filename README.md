@@ -1,3 +1,5 @@
+![alt text](https://github.com/sareeves96/crispr_metagenomics_pipeline/blob/main/figure.png?raw=true)
+
 To install python dependencies:
 
 `pip3 install -r requirements.txt`
