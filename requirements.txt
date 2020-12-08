@@ -1,2 +1,4 @@
 pandas
 biopython
+xhtml2pdf
+pypdf4
