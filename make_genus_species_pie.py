@@ -71,7 +71,7 @@ ax.pie(list(df_new.groupby('genus', sort=False).first()['genus_count'].values),
               ((df_new.groupby('genus', sort=False).first()['genus_count']/
                 df_new.groupby('genus', sort=False).first()['genus_count'].sum())*100).round(1).astype(str) + '%'),
     rotatelabels=True,
-    labeldistance=0.2,
+    labeldistance=0.4,
     counterclock=False,
     startangle=-90)
 

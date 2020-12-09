@@ -11,8 +11,8 @@ parser.add_argument('--cas', action='store', dest='cas_path', help='full path to
 parser.add_argument('--out', action='store', dest='out_path')
 args = parser.parse_args()
 
-df = pd.read_csv(args.table, sep='\t', index_col=0)
-df_cas = pd.read_csv(args.cas, sep='\t')
+df = pd.read_csv(args.table_path, sep='\t', index_col=0)
+df_cas = pd.read_csv(args.cas_path, sep='\t')
 df = df.reset_index().drop_duplicates(subset='contig_id', keep='first')
 df = df.merge(df_cas, on='contig_id', how='outer')
 

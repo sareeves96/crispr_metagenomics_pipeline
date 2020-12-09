@@ -45,5 +45,5 @@ blastn -query $out_dir_2/labelled_spacers.fa -db ref_viruses_rep_genomes -outfmt
 
 python3 label_contigs_with_blast.py --contigs $in_file_name --spacers $out_dir_2/labelled_spacers.fa --contigs_blast $out_dir_2/blast_contigs_vs_prok_rep_genomes.tab --spacers_blast $out_dir_2/blast_spacers_vs_rep_viruses.tab --out $out_dir_2 --result $out_dir/result.json
 
-python3 make_cas_class_genus.py --table $out_dir_2/final_output.tab --cas $out_dir_2/Cas_summary.tsv --out $out_dir_2
+python3 make_cas_class_genus_pie.py --table $out_dir_2/final_output.tab --cas $out_dir_2/Cas_summary.tsv --out $out_dir_2
 python3 make_genus_species_pie.py --table $out_dir_2/final_output.tab --out $out_dir_2
