@@ -132,7 +132,7 @@ df_casgene_occurence = df_sum_cas.apply(lambda x: (x/total_cas_genes)*100).round
 df_casgene_occurence.columns = ['Occurence']
 print(df_casgene_occurence)
 
-plot_title = "Distribution of cas genes in the metagenome as a percentage"
+plot_title = "Abundance of Cas gene types in whole metagenome"
 plot_pie = df_casgene_occurence.plot.pie(y='Occurence', figsize=(8,8), ylabel="", legend=False, autopct='%.2f', fontsize=10, title=plot_title)  # Plot
 pie_chart = plot_pie.get_figure()
 plt.tight_layout()
@@ -180,7 +180,7 @@ df_pie.loc['Other', 'total'] = df_p.loc[df_p['total']<=2].sum().values[0]
 df_pie = df_pie.rename(columns={'total':'Occurence'})
 print(df_pie)
 
-plot_title_cas_genera = "Distribution of cas genes across genera as a percentage"
+plot_title_cas_genera = "Distribution of detected cas genes into contigs belonging to genera"
 plot_pie = df_pie.plot.pie(y='Occurence', figsize=(8,8), ylabel="", legend=False, autopct='%.2f', fontsize=10, title=plot_title_cas_genera)  # Plot
 pie_chart_cas_genus = plot_pie.get_figure()
 plt.tight_layout()
@@ -201,7 +201,7 @@ df_ratios = df_ratios[['percent']].reset_index()
 ## --------------------------------------------------
 ## Plot the data as a pie chart and export as a PDF
 plt.clf()
-plot_title_cas_genera = "Fractions of genera with cas genes"
+plot_title_cas_genera = "Percentage of contigs assigned to genera with cas gene(s)"
 plot_bar = df_ratios.plot.bar(y='percent', x='genus', figsize=(8,5), ylabel="Ratios in percentage", rot=90, legend=False, fontsize=10, title=plot_title_cas_genera)  # Plot
 bar_chart_ratios = plot_bar.get_figure()
 plt.tight_layout()
