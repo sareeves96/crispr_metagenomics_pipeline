@@ -52,6 +52,8 @@ genera_stats.pdf -> all genera related analysis. <br/>
 
 <u> PNG files: </u> <br/>
 
-genus_species_pie.png -> a pie chart (shown at top of read me) showing the distribution of top genera and species detected in the metagenome
+genus_species_pie.png -> a nested pie chart showing the distribution of top genera and species detected in the metagenome
+cas_class_genus.png ->  a 3-layer pie chart showing the distribution of cas proteins into CRISPR-Cas system classes and how these associate with genera
+cas_class_genus_alternate.png -> (shown at top of README) a version of the above pie chart which also incorporates information on the source contigs
 ***
 ***
